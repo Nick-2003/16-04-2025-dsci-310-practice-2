@@ -8,6 +8,7 @@ RUN Rscript -e "install.packages('remotes')" # Double quotes for command itself,
 RUN Rscript -e "remotes::install_version('renv', version='1.0.11')" # Install renv; since install_version is the same as install.packages; renv starts over or use lock file to instlal everything with renv 
 RUN Rscript -e "remotes::install_version('cowsay', version='1.0.0')" # Installs cowsay with specifc version; since this is here, don't need to reactivate renv within R file 
 RUN Rscript -e "remotes::install_version('rmarkdown', version='2.29', repos='https://cloud.r-project.org')"
+RUN Rscript -e "remotes::install_version('readr', version='2.1.5', repos='https://cloud.r-project.org')"
 
 COPY function.R /home/rstudio/function.R
 COPY cowsaid.R /home/rstudio/cowsaid.R

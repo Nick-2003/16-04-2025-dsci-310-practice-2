@@ -1,0 +1,56 @@
+---
+title: "Tutorial 6: Refactoring R Code"
+---
+
+# Introduction
+
+In this tutorial, you will refactor the code into separate scripts corresponding to each section. The dataset we will use comes from the `palmerpenguins` package, which contains measurements of penguins from three species.
+
+## Load Libraries and Data
+
+```{r}
+#| echo: fenced
+# Run 01_load_data.R
+data <- readr::read_csv("../output/penguins.csv")
+head(data)
+```
+
+# Methods
+
+In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.
+
+```{r}
+# Run 02_methods.R
+model_data <- readr::read_csv("../output/penguins_model.csv") %>%
+  dplyr::mutate(species = as.factor(species))
+head(model_data)
+```
+
+# Model
+
+We will fit a classification model using `tidymodels` to predict the species of a penguin based on its physical characteristics.
+
+```{r}
+# Run 03_model.R
+penguin_fit <- readr::read_rds("../output/penguin_fit.RDS")
+summary(penguin_fit)
+```
+
+# Results
+
+We evaluate the performance of the model using the test dataset.
+
+```{r}
+# Run 04_results.R
+conf_mat <- readr::read_rds("output/conf_mat.RDS") 
+conf_mat
+```
+
+# Conclusion
+
+In this tutorial, we:
+
+- Loaded and cleaned the `palmerpenguins` dataset.
+- Performed exploratory data analysis.
+- Built a k-Nearest Neighbors classification model using `tidymodels`.
+- Evaluated the model's performance.
