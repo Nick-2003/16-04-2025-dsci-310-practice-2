@@ -7,4 +7,4 @@ data <- penguins
 # Initial cleaning: Remove missing values
 data <- data %>% tidyr::drop_na()
 
-readr::write_csv(data, "output/penguins.csv")
+readr::write_csv(data, "data/penguins.csv")

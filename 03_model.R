@@ -1,11 +1,12 @@
 library(readr)
 library(rsample)
-library(workflows)
-library(kknn)
 library(parsnip)
+library(kknn)
+library(dplyr)
+library(workflows)
 
-data <- readr::read_csv("output/penguins_model.csv") %>%
-  dplyr::mutate(species = as.factor(species))
+data <- readr::read_csv("data/penguins_model.csv") %>%
+  mutate(species = as.factor(species)) # Need to respecify that they are factors
 
 # Split data
 set.seed(123)
@@ -15,7 +16,7 @@ test_data <- rsample::testing(data_split)
 
 # Define model
 penguin_model <- parsnip::nearest_neighbor(mode = "classification", neighbors = 5) %>%
-  parsnip::set_engine("kknn")
+  parsnip::set_engine("kknn") # Requires kknn package
 
 # Create workflow
 penguin_workflow <- workflows::workflow() %>%
@@ -26,6 +27,7 @@ penguin_workflow <- workflows::workflow() %>%
 penguin_fit <- penguin_workflow %>%
   parsnip::fit(data = train_data)
 
-readr::write_csv(train_data, "output/train_data.csv")
-readr::write_csv(test_data, "output/test_data.csv")
-readr::write_rds(penguin_fit, "output/penguin_fit.RDS")
+# Save for future steps
+readr::write_csv(train_data, "data/train_data.csv") # new .csv to work with
+readr::write_csv(test_data, "data/test_data.csv") # new .csv to work with
+readr::write_rds(penguin_fit, "output/penguin_fit.RDS") # Save any arbitrary R object into a file; don't need to rerun model stuff again unless you want additional steps
