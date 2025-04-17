@@ -1,6 +1,7 @@
 library(readr)
 library(dplyr)
 library(yardstick)
+library(workflows) # To run penguin_fit workflow properly
 
 train_data <- readr::read_csv("data/train_data.csv") %>%
   dplyr::mutate(species = as.factor(species))
