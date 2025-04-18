@@ -8,10 +8,11 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 
 ## Load Libraries and Data
 
-```{r}
+```{r setup}
 #| echo: fenced
 # Run 01_load_data.R
-data <- readr::read_csv("../output/penguins.csv")
+library(tidyverse)
+data <- readr::read_csv("~/work/data/penguins.csv")
 head(data)
 ```
 
@@ -19,9 +20,9 @@ head(data)
 
 In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.
 
-```{r}
+```{r methods}
 # Run 02_methods.R
-model_data <- readr::read_csv("../output/penguins_model.csv") %>%
+model_data <- readr::read_csv("~/work/data/penguins_model.csv") %>%
   dplyr::mutate(species = as.factor(species))
 head(model_data)
 ```
@@ -30,9 +31,9 @@ head(model_data)
 
 We will fit a classification model using `tidymodels` to predict the species of a penguin based on its physical characteristics.
 
-```{r}
+```{r model}
 # Run 03_model.R
-penguin_fit <- readr::read_rds("../output/penguin_fit.RDS")
+penguin_fit <- readr::read_rds("~/work/output/penguin_fit.RDS")
 summary(penguin_fit)
 ```
 
@@ -40,10 +41,20 @@ summary(penguin_fit)
 
 We evaluate the performance of the model using the test dataset.
 
-```{r}
+```{r results}
 # Run 04_results.R
-conf_mat <- readr::read_rds("output/conf_mat.RDS") 
+conf_mat <- readr::read_rds("~/work/output/conf_mat.RDS") 
 conf_mat
+```
+
+# Package Installation
+
+We test out the output of the package `regexcite20250416`.
+
+```{r pack}
+# Run 05_package.R
+func_outputs <- readr::read_csv("~/work/output/func_outputs.csv")
+func_outputs
 ```
 
 # Conclusion
