@@ -4,16 +4,17 @@ title: "Tutorial 6: Refactoring R Code"
 
 # Introduction
 
-In this tutorial, you will refactor the code into separate scripts corresponding to each section. The dataset we will use comes from the `palmerpenguins` package, which contains measurements of penguins from three species.
+In this tutorial, you will refactor the code into separate scripts corresponding to each section. The dataset we will use comes from the `palmerpenguins` package, which contains measurements of penguins from three species. The results are displayed in 
 
 ## Load Libraries and Data
 
 ```{r setup}
-#| echo: fenced
+#| echo: false
+#| tbl-cap: Intial penguins model.
 # Run 01_load_data.R
 library(tidyverse)
 data <- readr::read_csv("~/work/data/penguins.csv")
-head(data)
+knitr::kable(head(data))
 ```
 
 # Methods
@@ -21,10 +22,12 @@ head(data)
 In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.
 
 ```{r methods}
+#| echo: false
+#| tbl-cap: EDA for penguins model.
 # Run 02_methods.R
 model_data <- readr::read_csv("~/work/data/penguins_model.csv") %>%
   dplyr::mutate(species = as.factor(species))
-head(model_data)
+knitr::kable(head(model_data))
 ```
 
 # Model
@@ -32,9 +35,11 @@ head(model_data)
 We will fit a classification model using `tidymodels` to predict the species of a penguin based on its physical characteristics.
 
 ```{r model}
+#| echo: false
+#| tbl-cap: Classification model.
 # Run 03_model.R
 penguin_fit <- readr::read_rds("~/work/output/penguin_fit.RDS")
-summary(penguin_fit)
+knitr::kable(summary(penguin_fit))
 ```
 
 # Results
@@ -42,9 +47,11 @@ summary(penguin_fit)
 We evaluate the performance of the model using the test dataset.
 
 ```{r results}
+#| echo: false
+#| tbl-cap: Model performance.
 # Run 04_results.R
 conf_mat <- readr::read_rds("~/work/output/conf_mat.RDS") 
-conf_mat
+knitr::kable(conf_mat$table)
 ```
 
 # Package Installation
@@ -52,9 +59,11 @@ conf_mat
 We test out the output of the package `regexcite20250416`.
 
 ```{r pack}
+#| echo: false
+#| tbl-cap: Package usage.
 # Run 05_package.R
 func_outputs <- readr::read_csv("~/work/output/func_outputs.csv")
-func_outputs
+knitr::kable(func_outputs)
 ```
 
 # Conclusion
