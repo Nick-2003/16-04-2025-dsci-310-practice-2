@@ -73,15 +73,7 @@ ul.task-list li input[type="checkbox"] {
 ✔ readr   2.1.3     ✔ forcats 0.5.2
 ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
 ✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-Rows: 333 Columns: 8
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (3): species, island, sex
-dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+✖ dplyr::lag()    masks stats::lag()</code></pre>
 </div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
@@ -178,6 +170,8 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <section id="methods" class="level1">
 <h1>Methods</h1>
 <p>In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.</p>
+<section id="glimpse-at-base-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="glimpse-at-base-dataset">Glimpse at base dataset</h2>
 <div class="cell" data-tbl-cap="Glimpse at base dataset.">
 <div class="cell-output cell-output-stdout">
 <pre><code>Rows: 333
@@ -192,16 +186,10 @@ $ sex               &lt;chr&gt; "male", "female", "female", "female", "male", "f
 $ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
 </div>
 </div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1 Columns: 4
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-dbl (4): mean_bill_length, mean_bill_depth, mean_flipper_length, mean_body_mass
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Summary statistics in base dataset. </caption>
@@ -236,17 +224,10 @@ dbl (4): mean_bill_length, mean_bill_depth, mean_flipper_length, mean_body_mass
 <p></p><figcaption class="figure-caption">Figure&nbsp;1: Boxplot of Bill Length against Species</figcaption><p></p>
 </figure>
 </div>
+</section>
+<section id="cleaning" class="level2">
+<h2 class="anchored" data-anchor-id="cleaning">Cleaning</h2>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 333 Columns: 5
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): species
-dbl (4): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Cleaned penguins dataset. </caption>
@@ -313,6 +294,7 @@ dbl (4): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g
 </table>
 </div>
 </div>
+</section>
 </section>
 <section id="model" class="level1">
 <h1>Model</h1>
@@ -402,16 +384,6 @@ dbl (4): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g
 <h1>Package Installation</h1>
 <p>We test out the output of the package <code>regexcite20250416</code>.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 3 Columns: 2
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): Function
-dbl (1): Output
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
 <caption>Package usage. </caption>

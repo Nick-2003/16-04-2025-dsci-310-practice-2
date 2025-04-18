@@ -4,7 +4,7 @@ title: "Tutorial 6: Refactoring R Code"
 
 # Introduction
 
-In this tutorial, you will refactor the code into separate scripts corresponding to each section. The dataset we will use comes from the `palmerpenguins` package, which contains measurements of penguins from three species. The results are displayed in 
+In this tutorial, you will refactor the code into separate scripts corresponding to each section. The dataset we will use comes from the `palmerpenguins` package, which contains measurements of penguins from three species. The results are displayed in
 
 ## Load Libraries and Data
 
@@ -13,13 +13,15 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 #| tbl-cap: Intial penguins dataset.
 # Run 01_load_data.R
 library(tidyverse)
-data <- readr::read_csv("~/work/data/raw/penguins.csv")
+data <- readr::read_csv("~/work/data/raw/penguins.csv", show_col_types = FALSE)
 knitr::kable(head(data))
 ```
 
 # Methods
 
 In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.
+
+## Glimpse at base dataset
 
 ```{r method1}
 #| echo: false
@@ -28,21 +30,27 @@ In this section, we perform exploratory data analysis (EDA) and prepare the data
 dplyr::glimpse(data)
 ```
 
+## Analysis
+
 ```{r methods2}
 #| echo: false
 #| tbl-cap: Summary statistics in base dataset.
 # Run 02_methods.R
-summary_stats <- readr::read_csv("~/work/output/summary_stats.csv")
+summary_stats <- readr::read_csv("~/work/output/summary_stats.csv", show_col_types = FALSE)
 knitr::kable(head(summary_stats))
 ```
 
 ![Boxplot of Bill Length against Species](../output/boxplot.png){#fig-eda1}
 
+
+
+## Cleaning
+
 ```{r methods3}
 #| echo: false
 #| tbl-cap: Cleaned penguins dataset.
 # Run 02_methods.R
-clean_data <- readr::read_csv("~/work/data/processed/penguins_clean.csv") %>%
+clean_data <- readr::read_csv("~/work/data/processed/penguins_clean.csv", show_col_types = FALSE) %>%
   dplyr::mutate(species = as.factor(species))
 knitr::kable(head(clean_data))
 ```
@@ -79,7 +87,7 @@ We test out the output of the package `regexcite20250416`.
 #| echo: false
 #| tbl-cap: Package usage.
 # Run 05_package.R
-func_outputs <- readr::read_csv("~/work/output/func_outputs.csv")
+func_outputs <- readr::read_csv("~/work/output/func_outputs.csv", show_col_types = FALSE)
 knitr::kable(func_outputs)
 ```
 
@@ -87,7 +95,7 @@ knitr::kable(func_outputs)
 
 In this tutorial, we:
 
-- Loaded and cleaned the `palmerpenguins` dataset.
-- Performed exploratory data analysis.
-- Built a k-Nearest Neighbors classification model using `tidymodels`.
-- Evaluated the model's performance.
+-   Loaded and cleaned the `palmerpenguins` dataset.
+-   Performed exploratory data analysis.
+-   Built a k-Nearest Neighbors classification model using `tidymodels`.
+-   Evaluated the model's performance.
