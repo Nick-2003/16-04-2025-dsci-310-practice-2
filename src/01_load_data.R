@@ -1,4 +1,4 @@
-"This script loads, cleans, and saves `penguins`` dataset
+"This script loads, cleans, and saves `penguins` dataset
 
 Usage: src/01-load_clean.R --output_path=<output_path>
 

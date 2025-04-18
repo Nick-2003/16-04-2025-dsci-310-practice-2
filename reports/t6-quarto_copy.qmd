@@ -13,7 +13,7 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 #| tbl-cap: Intial penguins model.
 # Run 01_load_data.R
 library(tidyverse)
-data <- readr::read_csv("~/work/data/penguins.csv")
+data <- readr::read_csv("~/work/data/raw/penguins.csv")
 knitr::kable(head(data))
 ```
 
@@ -25,7 +25,7 @@ In this section, we perform exploratory data analysis (EDA) and prepare the data
 #| echo: false
 #| tbl-cap: EDA for penguins model.
 # Run 02_methods.R
-model_data <- readr::read_csv("~/work/data/penguins_model.csv") %>%
+model_data <- readr::read_csv("~/work/data/processed/penguins_model.csv") %>%
   dplyr::mutate(species = as.factor(species))
 knitr::kable(head(model_data))
 ```
