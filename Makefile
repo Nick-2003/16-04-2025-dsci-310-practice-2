@@ -11,9 +11,9 @@ clean:
 
 index.html: work/data/raw/penguins.csv \
 	work/data/processed/penguins_clean.csv \
-	work/data/train_data.csv \
+	work/data/processed/train_data.csv \
 	work/data/processed/test_data.csv \
-	work/data/processed/penguins_model.csv \
+	work/output/penguin_fit.RDS \
 	work/output/conf_mat.RDS \
 	work/output/func_outputs.csv \
 	work/reports/t6-quarto_copy.html \
@@ -29,10 +29,12 @@ work/data/raw/penguins.csv: work/src/01_load_data.R
 work/data/processed/penguins_clean.csv: work/src/02_methods.R work/data/raw/penguins.csv
 	Rscript work/src/02_methods.R \
 	--input_path=work/data/raw/penguins.csv \
-	--output_path=work/data/processed/penguins_clean.csv
+	--output_path_summary=work/output/summary_stats.csv \
+	--output_path_image=work/output/boxplot.png \
+	--output_path_clean=work/data/processed/penguins_clean.csv
 
 # For 03_model.R
-work/data/train_data.csv work/data/processed/test_data.csv work/data/processed/penguins_model.csv: work/src/03_model.R work/data/processed/penguins_clean.csv
+work/data/train_data.csv work/data/processed/test_data.csv work/output/penguin_fit.RDS: work/src/03_model.R work/data/processed/penguins_clean.csv
 	Rscript work/src/03_model.R \
 	--input_path=work/data/processed/penguins_clean.csv \
 	--output_path_train=work/data/train_data.csv \

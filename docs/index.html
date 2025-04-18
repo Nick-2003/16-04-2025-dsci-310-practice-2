@@ -85,7 +85,7 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 </div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
-<caption>Intial penguins model. </caption>
+<caption>Intial penguins dataset. </caption>
 <colgroup>
 <col style="width: 8%">
 <col style="width: 11%">
@@ -178,6 +178,64 @@ dbl (5): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g, year
 <section id="methods" class="level1">
 <h1>Methods</h1>
 <p>In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.</p>
+<div class="cell" data-tbl-cap="Glimpse at base dataset.">
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 333
+Columns: 8
+$ species           &lt;chr&gt; "Adelie", "Adelie", "Adelie", "Adelie", "Adelie", "A…
+$ island            &lt;chr&gt; "Torgersen", "Torgersen", "Torgersen", "Torgersen", …
+$ bill_length_mm    &lt;dbl&gt; 39.1, 39.5, 40.3, 36.7, 39.3, 38.9, 39.2, 41.1, 38.6…
+$ bill_depth_mm     &lt;dbl&gt; 18.7, 17.4, 18.0, 19.3, 20.6, 17.8, 19.6, 17.6, 21.2…
+$ flipper_length_mm &lt;dbl&gt; 181, 186, 195, 193, 190, 181, 195, 182, 191, 198, 18…
+$ body_mass_g       &lt;dbl&gt; 3750, 3800, 3250, 3450, 3650, 3625, 4675, 3200, 3800…
+$ sex               &lt;chr&gt; "male", "female", "female", "female", "male", "femal…
+$ year              &lt;dbl&gt; 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007, 2007…</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Rows: 1 Columns: 4
+── Column specification ────────────────────────────────────────────────────────
+Delimiter: ","
+dbl (4): mean_bill_length, mean_bill_depth, mean_flipper_length, mean_body_mass
+
+ℹ Use `spec()` to retrieve the full column specification for this data.
+ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+</div>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Summary statistics in base dataset. </caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 23%">
+<col style="width: 29%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: right;">mean_bill_length</th>
+<th style="text-align: right;">mean_bill_depth</th>
+<th style="text-align: right;">mean_flipper_length</th>
+<th style="text-align: right;">mean_body_mass</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: right;">43.99279</td>
+<td style="text-align: right;">17.16486</td>
+<td style="text-align: right;">200.967</td>
+<td style="text-align: right;">4207.057</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="fig-eda1" class="quarto-figure quarto-figure-center anchored">
+<figure class="figure">
+<p><img src="../output/boxplot.png" class="img-fluid figure-img"></p>
+<p></p><figcaption class="figure-caption">Figure&nbsp;1: Boxplot of Bill Length against Species</figcaption><p></p>
+</figure>
+</div>
 <div class="cell">
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 333 Columns: 5
@@ -191,7 +249,7 @@ dbl (4): bill_length_mm, bill_depth_mm, flipper_length_mm, body_mass_g
 </div>
 <div class="cell-output-display">
 <table class="table table-sm table-striped">
-<caption>EDA for penguins model. </caption>
+<caption>Cleaned penguins dataset. </caption>
 <colgroup>
 <col style="width: 11%">
 <col style="width: 22%">

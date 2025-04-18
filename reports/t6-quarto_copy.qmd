@@ -10,7 +10,7 @@ In this tutorial, you will refactor the code into separate scripts corresponding
 
 ```{r setup}
 #| echo: false
-#| tbl-cap: Intial penguins model.
+#| tbl-cap: Intial penguins dataset.
 # Run 01_load_data.R
 library(tidyverse)
 data <- readr::read_csv("~/work/data/raw/penguins.csv")
@@ -21,13 +21,30 @@ knitr::kable(head(data))
 
 In this section, we perform exploratory data analysis (EDA) and prepare the data for modeling.
 
-```{r methods}
+```{r method1}
 #| echo: false
-#| tbl-cap: EDA for penguins model.
+#| tbl-cap: Glimpse at base dataset.
 # Run 02_methods.R
-model_data <- readr::read_csv("~/work/data/processed/penguins_model.csv") %>%
+dplyr::glimpse(data)
+```
+
+```{r methods2}
+#| echo: false
+#| tbl-cap: Summary statistics in base dataset.
+# Run 02_methods.R
+summary_stats <- readr::read_csv("~/work/output/summary_stats.csv")
+knitr::kable(head(summary_stats))
+```
+
+![Boxplot of Bill Length against Species](../output/boxplot.png){#fig-eda1}
+
+```{r methods3}
+#| echo: false
+#| tbl-cap: Cleaned penguins dataset.
+# Run 02_methods.R
+clean_data <- readr::read_csv("~/work/data/processed/penguins_clean.csv") %>%
   dplyr::mutate(species = as.factor(species))
-knitr::kable(head(model_data))
+knitr::kable(head(clean_data))
 ```
 
 # Model
