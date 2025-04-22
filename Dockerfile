@@ -15,7 +15,8 @@ RUN Rscript -e "remotes::install_version('palmerpenguins', version='0.1.1', repo
     Rscript -e "remotes::install_version('parsnip', version='1.1.1', repos='https://cloud.r-project.org')" && \ 
     Rscript -e "remotes::install_version('kknn', version='1.3.1', repos='https://cloud.r-project.org')" && \ 
     Rscript -e "remotes::install_version('workflows', version='1.1.4', repos='https://cloud.r-project.org')" && \ 
-    Rscript -e "remotes::install_version('yardstick', version='1.2.0', repos='https://cloud.r-project.org')"
+    Rscript -e "remotes::install_version('yardstick', version='1.2.0', repos='https://cloud.r-project.org')" && \ 
+    Rscript -e "remotes::install_version('tidymodels', version='1.0.1', repos='https://cloud.r-project.org')"
 
 RUN R -e 'remotes::install_github("Nick-2003/regexcite20250416")'
 

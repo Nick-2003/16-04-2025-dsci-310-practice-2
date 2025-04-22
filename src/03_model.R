@@ -14,7 +14,7 @@ library(tidyverse)
 library(readr)
 library(rsample)
 library(parsnip)
-library(kknn)
+library(kknn) # For parsnip::set_engine("kknn")
 library(dplyr)
 library(workflows)
 

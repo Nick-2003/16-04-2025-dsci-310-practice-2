@@ -10,6 +10,8 @@ clean:
 	rm -rf docs/*
 
 index.html: work/data/raw/penguins.csv \
+	work/output/summary_stats.csv \
+	work/output/boxplot.png \
 	work/data/processed/penguins_clean.csv \
 	work/data/processed/train_data.csv \
 	work/data/processed/test_data.csv \
@@ -26,7 +28,7 @@ work/data/raw/penguins.csv: work/src/01_load_data.R
 	--output_path=work/data/raw/penguins.csv
 
 # For 02_methods.R
-work/data/processed/penguins_clean.csv: work/src/02_methods.R work/data/raw/penguins.csv
+work/output/summary_stats.csv work/output/boxplot.png work/data/processed/penguins_clean.csv: work/src/02_methods.R work/data/raw/penguins.csv
 	Rscript work/src/02_methods.R \
 	--input_path=work/data/raw/penguins.csv \
 	--output_path_summary=work/output/summary_stats.csv \
